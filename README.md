@@ -24,11 +24,11 @@
 | ----------------- | ---------- | -------------------------------|
 | name              | string     | null: false                    |
 | explanation       | text       | null: false                    |
-| category_id       | integer    | null: false, foreign_key: true |
-| condition_id      | integer    | null: false, foreign_key: true |
-| delivery_cost_id  | integer    | null: false, foreign_key: true |
-| deliver_from_id   | integer    | null: false, foreign_key: true |
-| delivery_date_id  | integer    | null: false, foreign_key: true |
+| category_id       | integer    | null: false                    |
+| condition_id      | integer    | null: false                    |
+| delivery_cost_id  | integer    | null: false                    |
+| deliver_from_id   | integer    | null: false                    |
+| delivery_date_id  | integer    | null: false                    |
 | price             | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
 
@@ -54,6 +54,10 @@
 
 |Column             | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
+| postal_code       | integer    | null: false                    |
+| prefecture        | string     | null: false                    |
+| city              | string     | null: false                    |
+| house_no          | string     | null: false                    |
 | telephone_no      | string     | null: false                    |
 | purchase          | references | null: false, foreign_key: true |
 
