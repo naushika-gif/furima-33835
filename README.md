@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-|Column             | Type   | Options                   |
-| ----------------- | ------ | ------------------------- |
-| nickname          | string | null: false               |
-| email             | string | null: false, unique: true |
-| password          | string | null: false               |
-| first_name_jap    | string | null: false               |
-| family_name_jap   | string | null: false               |
-| first_name_kana   | string | null: false               |
-| family_name_kana  | string | null: false               |
-| birthday          | integer| null: false               |
+|Column              | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name_jap     | string | null: false               |
+| family_name_jap    | string | null: false               |
+| first_name_kana    | string | null: false               |
+| family_name_kana   | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -22,15 +22,14 @@
 
 |Column             | Type       | Options                        |
 | ----------------- | ---------- | -------------------------------|
-| image             |            | null: false                    |
-| name              | text       | null: false                    |
+| name              | string     | null: false                    |
 | explanation       | text       | null: false                    |
-| category          | string     | null: false                    |
-| condition         | string     | null: false                    |
+| category_id       | integer    | null: false, foreign_key: true |
+| condition_id      | integer    | null: false, foreign_key: true |
+| delivery_cost_id  | integer    | null: false, foreign_key: true |
+| deliver_from_id   | integer    | null: false, foreign_key: true |
+| delivery_date_id  | integer    | null: false, foreign_key: true |
 | price             | integer    | null: false                    |
-| delivery_cost     | string     | null: false                    |
-| deliver_from      | string     | null: false                    |
-| delivery_date     | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
 
 ### Association
@@ -55,7 +54,7 @@
 
 |Column             | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
-| telephone_no      | integer    | null: false                    |
+| telephone_no      | string     | null: false                    |
 | purchase          | references | null: false, foreign_key: true |
 
 ### Association
