@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_paramaters, if: :devise_controller?
-  before_action :authenticate_user!
 
   #新規登録での入力情報をDBヘ保存するためのメソッド。カラム名の全ての追加が必要
   private
