@@ -7,7 +7,7 @@ RSpec.describe Product, type: :model do
   describe '出品する商品の保存' do
     context "出品する商品のデータが保存できるとき" do
       it '全ての項目の入力が存在されていれば登録できる' do
-        expect(@user).to be_valid
+        expect(@product).to be_valid
       end
     end
     context '出品する商品のデータが保存できないとき'
