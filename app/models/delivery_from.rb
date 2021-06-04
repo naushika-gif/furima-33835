@@ -1,4 +1,4 @@
-class DeliveryFromId < ActiveHash::Base
+class DeliveryFrom < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '北海道' },

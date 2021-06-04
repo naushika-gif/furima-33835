@@ -1,7 +1,7 @@
 # テーブル設計
 
 ## users テーブル
-
+<!-- モデル名 -->
 |Column              | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |

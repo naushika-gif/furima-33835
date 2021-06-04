@@ -2,22 +2,19 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category_id
-  belongs_to :condition_id
-  belongs_to :delivery_cost_id
-  belongs_to :delivery_from_id
-  belongs_to :delivery_date_id
+  # モデル名
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :delivery_cost
+  belongs_to :delivery_from
+  belongs_to :delivery_date
 
   with_options presence:true do
     validates :name
     validates :explanation
-    validates :category_id
-    validates :condition_id
-    validates :delivery_cost_id
-    validates :delivery_from_id
-    validates :delivery_date_id
 
   with_options numericality: { other_than: 1} do
+    # カラム名
       validates :category_id
       validates :condition_id
       validates :delivery_cost_id
