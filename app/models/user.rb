@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   # 属性の値がDBに保存されても良いかチェックを行う条件
+ has_many :products
 
   with_options presence: true do
     validates :nickname
