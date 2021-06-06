@@ -133,7 +133,7 @@
 
          <%= link_to "#" do %>
           <div class='item-img-content'>
-          <%= image_tag product.image, class: "item-img" if product.image.attached? %>
+          <%= link_to image_tag(product.image, class: "item-img"), product_path(product.id) if product.image.attached? %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <% if %>
@@ -163,6 +163,7 @@
         <% end %>
       </li>
 
+      <% if @products.length == nil %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -179,6 +180,7 @@
           </div>
         </div>
         <% end %>
+      <% end %>
       </li>
     </ul>
   </div>
