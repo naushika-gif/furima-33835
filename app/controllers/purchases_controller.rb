@@ -12,6 +12,7 @@ class PurchasesController < ApplicationController
   def create
     @buyer_address = BuyerAddress.new(purchase_params)
     if @buyer_address.valid?
+      pay_item
        @buyer_address.save
       redirect_to root_path
     else
@@ -29,7 +30,16 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path if current_user.id == @product.user_id && @product.purchase != nil
+    redirect_to root_path if current_user.id == @product.user_id || @product.purchase != nil
+  end
+
+  def pay_item
+     Payjp.api_key = ENV["sk_test_e053042f5bfd6537271c5531"]
+     Payjp::Charge.create(
+       amount: purchase_params[:price],
+       token: purchase_params[:token],
+       currency:'jpy'
+    )
   end
 end
 

@@ -63,6 +63,22 @@ RSpec.describe BuyerAddress, type: :model do
       @buyer_address.valid?
       expect(@buyer_address.errors.full_messages).to include("Telephone no is invalid")
     end
+
+    it 'tokenの値がnilの場合購入できない' do
+      @buyer_address.token = nil
+      @buyer_address.valid?
+      expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
+    end
+    it 'userの値がnilの場合購入できない' do 
+      @buyer_address.user_id = nil
+      @buyer_address.valid?
+      expect(@buyer_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'productの値がnilの場合購入できない' do
+    @buyer_address.product_id = nil
+    @buyer_address.valid?
+    expect(@buyer_address.errors.full_messages).to include("Product can't be blank")
+    end
    end
   end
 end
