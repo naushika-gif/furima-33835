@@ -1,16 +1,15 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_purchase, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
   # 購入ページに行く前にログインしているユーザーかどうかを確認している
   # 遷移に関することはコントローラーで定義する
 
   def index
   @buyer_address = BuyerAddress.new
-  @product = Product.find(params[:product_id])
-  redirect_to root_path if current_user.id == @product.user_id && @product.purchase != nil
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @buyer_address = BuyerAddress.new(purchase_params)
     if @buyer_address.valid?
        @buyer_address.save
@@ -23,6 +22,14 @@ class PurchasesController < ApplicationController
   private
   def purchase_params
     params.require(:buyer_address).permit(:postal_code, :delivery_from_id, :city, :house_number, :building_name, :telephone_no).merge(user_id: current_user.id, product_id: params[:product_id])
+  end
+
+  def set_purchase
+    @product = Product.find(params[:product_id])
+  end
+
+  def move_to_index
+    redirect_to root_path if current_user.id == @product.user_id && @product.purchase != nil
   end
 end
 

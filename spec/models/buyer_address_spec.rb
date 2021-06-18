@@ -24,7 +24,7 @@ RSpec.describe BuyerAddress, type: :model do
       expect(@buyer_address.errors.full_messages).to include("Postal code can't be blank")
     end
     it 'postal_codeにハイフンがないと登録できない' do
-      @buyer_address.postal_code = '000000'
+      @buyer_address.postal_code = '0000000'
       @buyer_address.valid?
       expect(@buyer_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
     end
@@ -55,6 +55,11 @@ RSpec.describe BuyerAddress, type: :model do
     end
     it 'telephone_noは文字列では登録できない' do
       @buyer_address.telephone_no = 'あああああああ'
+      @buyer_address.valid?
+      expect(@buyer_address.errors.full_messages).to include("Telephone no is invalid")
+    end
+    it 'telephone_noは英数混合では登録できない' do
+      @buyer_address.telephone_no = '12ああああああ'
       @buyer_address.valid?
       expect(@buyer_address.errors.full_messages).to include("Telephone no is invalid")
     end
