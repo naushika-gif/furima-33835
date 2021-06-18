@@ -59,7 +59,7 @@ RSpec.describe BuyerAddress, type: :model do
       expect(@buyer_address.errors.full_messages).to include("Telephone no is invalid")
     end
     it 'telephone_noは英数混合では登録できない' do
-      @buyer_address.telephone_no = '12ああああああ'
+      @buyer_address.telephone_no = '0801234abcd'
       @buyer_address.valid?
       expect(@buyer_address.errors.full_messages).to include("Telephone no is invalid")
     end
