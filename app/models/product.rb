@@ -17,7 +17,7 @@ class Product < ApplicationRecord
     validates :image
 
      with_options numericality: { other_than: 1} do
-    # カラム名
+     # カラム名
       validates :category_id
       validates :condition_id
       validates :delivery_cost_id
@@ -25,10 +25,10 @@ class Product < ApplicationRecord
       validates :delivery_date_id
      end
 
-     with_options numericality: { only_integer: true, message: 'is invalid. Input half-width characters' } do
+     with_options numericality: {only_integer: true, message: 'is invalid. Input half-width characters' } do
       validates :price
      end
-     with_options numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" } do
+     with_options numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" } do
       validates :price  
      end
   end
