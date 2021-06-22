@@ -27,9 +27,9 @@ class Product < ApplicationRecord
 
      with_options numericality: {only_integer: true, message: 'is invalid. Input half-width characters' } do
       validates :price
-     end
-     with_options numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" } do
-      validates :price  
-     end
+      end
   end
+     with_options numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" } do
+     validates :price  
+      end
 end
